@@ -1,0 +1,28 @@
+{% extends "bookshelf/base.html" %}
+
+{% block title %}Add Book{% endblock %}
+
+{% block content %}
+<h2>Add a New Book</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  {% if form.errors %}
+  <div class="errors">
+    <ul>
+      {% for field in form %}
+      {% for error in field.errors %}
+      <li>{{ field.label }}: {{ error }}</li>
+      {% endfor %}
+      {% endfor %}
+      {% for error in form.non_field_errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <button type="submit">Add Book</button>
+</form>
+{% endblock %}
