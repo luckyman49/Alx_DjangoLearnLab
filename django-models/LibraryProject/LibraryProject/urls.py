@@ -25,4 +25,5 @@ urlpatterns = [
     path('books/add/', add_book, name='add_book'),
     path('books/recent/', recent_books, name='recent_books'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path("admin/", admin.site.urls), path("relationship_app/", include("relationship_app.urls")),
 ]
