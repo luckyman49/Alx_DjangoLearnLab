@@ -2,7 +2,7 @@ from .models import Book, Library, Author, Librarian
 
 def books_in_library(library_id):
     """Return all books in a given library."""
-    return Book.objects.filter(library_id=library_id)
+    return Book.objects.filter(author=author)
 
 def books_by_author(author_id):
     """Return all books written by a given author."""
