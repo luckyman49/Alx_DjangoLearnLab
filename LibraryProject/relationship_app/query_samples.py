@@ -1,5 +1,3 @@
-from relationship_app.models import Author, Book, Library, Librarian
-
 from .models import Book, Library
 
 def books_in_library(library_id):
