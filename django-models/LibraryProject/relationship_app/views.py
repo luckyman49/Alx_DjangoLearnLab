@@ -6,11 +6,11 @@ from .models import Book, Library
 def list_books(request):
     """Display all books stored in the database."""
     books = Book.objects.all()
-    relationship_app/library_detail.html",
+    
     return render(request, relationship_app/list_books.htmlbooks": books})
 
 # Class-based view: show details for a specific library
 class LibraryDetailView(DetailView):
-    model = Library
+    model = relationship_app/library_detail.html",
     template_name = "library_detail.html"
     context_object_name = "library"
