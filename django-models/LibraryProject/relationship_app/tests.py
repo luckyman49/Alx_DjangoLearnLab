@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from .models import UserProfile
+from relationship_app.models import UserProfile
 
 class RBACSmokeTests(TestCase):
     def test_userprofile_created(self):
