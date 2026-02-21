@@ -1,0 +1,55 @@
+[33md627c20[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Implement Role-Based Access Control with UserProfile and role-based views
+[33mb6c8705[m Implement Role-Based Access Control in relationship_app
+[33mf37d5af[m update roles of admin
+[33m5b3aa37[m Trigger checker refresh after moving project
+[33me7144c3[m Move LibraryProject to repo root so checker finds project files
+[33m9cd75c6[m Recreate mandatory templates and confirm role-based views
+[33mc0018de[m Fix template placement for role-based views
+[33m104f809[m Implement role-based views with @user_passes_test for Admin, Librarian, and Member
+[33m1c23723[m Implement role-based views with @user_passes_test for Admin, Librarian, and Member
+[33m8e741d4[m Fix role-based views with @user_passes_test and correct templates
+[33m35ff56a[m Add new created file to commit
+[33m9c8887a[m I have add the important content to urls.py
+[33m159af45[m I have add the important content to view.py
+[33m2d0319a[m Add new file
+[33m77cf7b5[m Fix the error on the structure
+[33m1d05f13[m Fix the urls.py
+[33md8bb66f[m Fix the view.py error
+[33m1f9f352[m Fix the view.py error
+[33m86ab503[m Fix the view.py error
+[33ma645781[m LibraryProject/relationship_app/urls.py
+[33m6caefdf[m LibraryProject/relationship_app/views.p
+[33m25e4651[m Fix the error on the structure
+[33m663381e[m Fix the error on the structure
+[33med86bcf[m Add new update in viwe.py
+[33m03cbc44[m Add new update in viwe.py
+[33m2674bb6[m Add new update in viwe.py
+[33me28702f[m Add new update in viwe.py
+[33m470f0c7[m Add new update in viwe.py
+[33m2bb15e5[m Add new update in viwe.py
+[33me039e91[m Add new update in viwe.py
+[33m435442d[m Add new update in viwe.py
+[33m2a0978d[m Add new update in viwe.py
+[33m9de2c59[m Finish my task two of my project
+[33m3b5e27a[m Add new update in querry
+[33m2dd92d9[m Add new update in querry
+[33m2ec8244[m Add new update in querry
+[33ma54b952[m Add new update in querry
+[33mf355b69[m Add new update file
+[33mea091f9[m Add complete models and query functions
+[33m0bd546b[m Add Library and Librarian models with query functions
+[33m033f7eb[m Add Library and Librarian models with query functions
+[33m0052948[m Remove duplicate LibraryProject folder
+[33m2cb6d67[m Rename project: remove old django_models and add LibraryProject
+[33mb398f29[m Fix project rename: updated settings, urls, wsgi, asgi
+[33m7bd8f20[m Implement advanced model relationships with ForeignKey, ManyToMany, and OneToOne
+[33mbe369b4[m Remove django-models directory to restart project
+[33mcfc1765[m Add Django-specific .gitignore
+[33me9ab831[m Add function-based and class-based views with URL configuration for relationship_app
+[33me2032fa[m Add django-models project with relationship_app models and queries
+[33m4beb64b[m Add django-models project with relationship_app models and queries
+[33md42d003[m Initial commit: Django library project
+[33m3ca06d4[m Initial commit: Django library project
+[33m42d06bd[m Registered Book model in admin with custom display
+[33me8353c4[m Renamed CRUD documentation files with .md extension
+[33md8ecb5d[m Task 1: Created Introduction_to_Django/LibraryProject project
