@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import UserProfile
 
-# Register the UserProfile model so it appears in the Django Admin dashboard
-admin.site.register(UserProfile)
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'role')
+    search_fields = ('user__username',)
 
