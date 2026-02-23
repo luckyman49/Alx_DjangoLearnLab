@@ -55,10 +55,8 @@ ROOT_URLCONF = 'LibraryProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],  # fixed: only one DIRS key
         'APP_DIRS': True,
-        'DIRS': [BASE_DIR / "templates"],
-
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
@@ -118,6 +116,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
 # Authentication redirects
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/login/"
+
