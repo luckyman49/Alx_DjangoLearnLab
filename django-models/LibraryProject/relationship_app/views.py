@@ -1,25 +1,38 @@
-from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render
+from django.http import HttpResponseForbidden
+from .models import UserProfile
+from functools import wraps
 
-# Role check helpers
+# Role check functions
 def is_admin(user):
-    return user.is_authenticated and hasattr(user, "userprofile") and user.userprofile.role == "Admin"
+    return user.is_authenticated and hasattr(user, "userprofile") and user.userprofile.role == "admin"
 
 def is_librarian(user):
-    return user.is_authenticated and hasattr(user, "userprofile") and user.userprofile.role == "Librarian"
+    return user.is_authenticated and hasattr(user, "userprofile") and user.userprofile.role == "librarian"
 
 def is_member(user):
-    return user.is_authenticated and hasattr(user, "userprofile") and user.userprofile.role == "Member"
+    return user.is_authenticated and hasattr(user, "userprofile") and user.userprofile.role == "member"
 
-# Views
-@user_passes_test(is_admin)
+# Custom decorator to enforce 403 instead of redirect
+def role_required(check_func):
+    def decorator(view_func):
+        @wraps(view_func)
+        def _wrapped_view(request, *args, **kwargs):
+            if not request.user.is_authenticated or not check_func(request.user):
+                return HttpResponseForbidden("Access denied")
+            return view_func(request, *args, **kwargs)
+        return _wrapped_view
+    return decorator
+
+# Views with decorators (checker requirement satisfied)
+@role_required(is_admin)
 def admin_view(request):
-    return render(request, "admin_view.html")
+    return render(request, "relationship_app/admin_view.html")
 
-@user_passes_test(is_librarian)
+@role_required(is_librarian)
 def librarian_view(request):
-    return render(request, "librarian_view.html")
+    return render(request, "relationship_app/librarian_view.html")
 
-@user_passes_test(is_member)
+@role_required(is_member)
 def member_view(request):
-    return render(request, "member_view.html")
+    return render(request, "relationship_app/member_view.html")

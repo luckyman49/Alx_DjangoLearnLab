@@ -5,4 +5,5 @@ class RelationshipAppConfig(AppConfig):
     name = 'relationship_app'
 
     def ready(self):
-        from . import signals  # noqa: F401
+        import relationship_app.signals
+
