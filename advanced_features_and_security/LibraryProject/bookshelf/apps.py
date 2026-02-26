@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class BookshelfConfig(AppConfig):
-    name = 'bookshelf'
+    efault_auto_field = "django.db.models.BigAutoField" 
+    name= "LibraryProject.bookshelf"
