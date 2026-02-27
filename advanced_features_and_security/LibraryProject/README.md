@@ -31,3 +31,14 @@ python manage.py test bookshelf
 - Safe ORM queries used to prevent SQL injection
 - Input validated via Django forms
 - Content Security Policy (CSP) enforced via django-csp middleware
+
+
+
+
+## Security Enhancements
+
+- Enforced HTTPS with SECURE_SSL_REDIRECT
+- Configured HSTS for one year with preload and subdomains
+- Secure cookies (SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE)
+- Added secure headers (X_FRAME_OPTIONS, SECURE_CONTENT_TYPE_NOSNIFF, SECURE_BROWSER_XSS_FILTER)
+- Deployment configured with SSL/TLS certificates via Nginx

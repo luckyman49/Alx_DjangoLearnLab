@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-lw_db#*lorg^r_m!5xizjz)2ql=*-4az#t!qqvky1nwtf$3#pu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False   # ✅ Never True in production
 
-ALLOWED_HOSTS = ["*"]  # ⚠️ Adjust for production (e.g., your domain)
+ALLOWED_HOSTS = ["*"]  # ⚠️ Adjust for production (e.g., yourdomain.com)
 
 # Application definition
 INSTALLED_APPS = [
@@ -85,15 +85,28 @@ USE_TZ = True
 # Static files
 STATIC_URL = "static/"
 
-# Security Settings
+# ===========================
+# 🔒 Security Settings
+# ===========================
+
+# Enforce HTTPS
+SECURE_SSL_REDIRECT = True
+
+# HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # one year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Secure Cookies
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# Secure Headers
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = "DENY"
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-
-# CSP (django-csp 4.0+)
+# Content Security Policy (django-csp 4.0+)
 CONTENT_SECURITY_POLICY = {
     "DIRECTIVES": {
         "default-src": ("'self'",),
