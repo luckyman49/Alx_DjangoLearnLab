@@ -3,6 +3,17 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import permission_required
 from .models import Book
 from .forms import BookForm
+from .forms import BookForm, ExampleForm
+
+def form_example(request):
+    form = ExampleForm()
+    return render(request, "bookshelf/form_example.html", {"form": form})
+
+
+
+
+
+
 
 def index(request):
     return HttpResponse("Hello from the bookshelf app!")
