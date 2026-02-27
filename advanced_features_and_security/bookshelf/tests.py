@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.test import TestCase, Client
 
 from django.test import TestCase
 from django.contrib.auth import get_user_model
@@ -45,3 +46,16 @@ class PermissionTests(TestCase):
     def test_admin_permissions(self):
         self.assertTrue(self.admin.has_perm("bookshelf.can_delete"))
 
+
+class SecurityHeadersTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_security_headers_present(self):
+        response = self.client.get("/")
+        # Check CSP header
+        self.assertIn("Content-Security-Policy", response.headers)
+        # Check X-Frame-Options
+        self.assertEqual(response.headers.get("X-Frame-Options"), "DENY")
+        # Check X-Content-Type-Options
+        self.assertEqual(response.headers.get("X-Content-Type-Options"), "nosniff")

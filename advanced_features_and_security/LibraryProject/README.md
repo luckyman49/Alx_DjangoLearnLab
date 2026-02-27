@@ -19,3 +19,15 @@ A Django project demonstrating advanced features and security with a custom user
 Run:
 ```bash
 python manage.py test bookshelf
+
+
+
+
+## Security Measures Implemented
+- DEBUG set to False in production
+- Browser protections: XSS filter, clickjacking protection, content type nosniff
+- Cookies secured with HTTPS (CSRF_COOKIE_SECURE, SESSION_COOKIE_SECURE)
+- CSRF tokens included in all forms
+- Safe ORM queries used to prevent SQL injection
+- Input validated via Django forms
+- Content Security Policy (CSP) enforced via django-csp middleware
