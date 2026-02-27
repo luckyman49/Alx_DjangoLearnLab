@@ -113,4 +113,8 @@ CONTENT_SECURITY_POLICY = {
         "script-src": ("'self'",),
         "style-src": ("'self'", "https://fonts.googleapis.com"),
     }
+
+
 }
+# Tell Django to trust the X-Forwarded-Proto header from the proxy
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
