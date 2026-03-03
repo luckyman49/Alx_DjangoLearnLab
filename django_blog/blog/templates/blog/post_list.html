@@ -15,5 +15,8 @@
 </h3>
 <p>{{ post.content|truncatewords:20 }}</p>
 {% endfor %}
-
+<form method="GET">
+  <input type="text" name="q" placeholder="Search...">
+  <button type="submit">Search</button>
+</form>
 {% endblock %}

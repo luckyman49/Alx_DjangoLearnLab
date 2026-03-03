@@ -4,9 +4,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth import login
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Post, Comment, CommentCreateView, CommentUpdateView, CommentDeleteView
+from .models import Post, Comment
 from .forms import UserRegisterForm, PostForm, CommentForm
-
+from django.db.models import Q
 
 # ------------------------
 # Authentication Views
@@ -37,8 +37,16 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
-    ordering = ['-published_date']
 
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Post.objects.filter(
+                Q(title__icontains=query) |
+                Q(content__icontains=query) |
+                Q(tags__name__icontains=query)
+            ).distinct()
+        return Post.objects.all()
 
 class PostDetailView(DetailView):
     model = Post
@@ -95,3 +103,33 @@ def add_comment(request, pk):
         form = CommentForm()
 
     return render(request, 'blog/add_comment.html', {'form': form})
+
+
+@login_required
+def update_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+
+    if request.user != comment.author:
+        return redirect('post-detail', pk=comment.post.pk)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('post-detail', pk=comment.post.pk)
+    else:
+        form = CommentForm(instance=comment)
+
+    return render(request, 'blog/add_comment.html', {'form': form})
+
+
+@login_required
+def delete_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+
+    if request.user == comment.author:
+        post_pk = comment.post.pk
+        comment.delete()
+        return redirect('post-detail', pk=post_pk)
+
+    return redirect('post-list')
