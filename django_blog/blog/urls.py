@@ -24,11 +24,12 @@ urlpatterns = [
     path('post/new/', views.PostCreateView.as_view(), name='post-create'),
     path('post/<int:pk>/update/', views.PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', views.PostDeleteView.as_view(), name='post-delete'),
-
+     path('PostByTagListView.as_view()', name='posts-by-tag'),
     # -------------------------
     # Comment URLs
     # -------------------------
     path('post/<int:pk>/comments/new/', views.add_comment, name='add-comment'),
     path('comment/<int:pk>/update/', views.update_comment, name='update-comment'),
     path('comment/<int:pk>/delete/', views.delete_comment, name='delete-comment'),
+    path('tags/<slug:tag_slug>/', views.PostByTagListView.as_view(), name='posts-by-tag'),
 ]

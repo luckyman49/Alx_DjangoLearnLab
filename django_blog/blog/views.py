@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth import login
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView,CommentCreateView, CommentUpdateView, CommentDeleteView
 from django.urls import reverse_lazy
 from .models import Post, Comment
 from .forms import UserRegisterForm, PostForm, CommentForm
