@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import CustomUser
 from django.contrib.auth import authenticate
-
+from rest_framework.authtoken.models import Token, Token.objects.create, get_user_model().objects.create_use
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
