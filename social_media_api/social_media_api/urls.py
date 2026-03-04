@@ -25,4 +25,7 @@ urlpatterns = [
     path('', include('accounts.urls')),   # include accounts endpoints
     path('', include('posts.urls')),      # include posts endpoints
 
+    path('', include('notifications.urls')),
+
+
 ]
